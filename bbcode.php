@@ -19,6 +19,13 @@ function bbcode($string)
 # Divs
   $string = preg_replace("#\[d:(.+)\](.+?)\[/d\]#is", "<div class=\"\\1\">\\2</div>", $string);
 
+# Paragraphs
+  do{
+    $laststring = $string;
+    $string = preg_replace("#\[paragraph:(.+)?\](.*)?\[(paragraph|section|subsection|subsubsection):(.+)?\]#isU", "<div class=\"paragraph\"><h4>$1</h4>$2</div>[$3:$4]", $string);
+  }while($string !== $laststring);
+  $string = preg_replace("#\[paragraph:(.+)?\](.*)$#isU", "<div class=\"paragraph\"><h4>$1</h4>$2</div>", $string);
+
 # Subsubsections
   do{
     $laststring = $string;
