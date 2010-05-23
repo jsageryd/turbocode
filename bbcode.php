@@ -13,6 +13,33 @@ function bbcode($string)
   $string = preg_replace("#\[img-l\](.+?)\[/img\]#is", "<img src=\"\\1\" alt=\"[image]\" style=\"border: thin solid #DFE5F2; FLOAT: left; MARGIN-RIGHT: 20px\" />", $string);
   $string = preg_replace("#\[img-r\](.+?)\[/img\]#is", "<img src=\"\\1\" alt=\"[image]\" style=\"border: thin solid #DFE5F2; FLOAT: right; MARGIN-LEFT: 20px;\" />", $string);
 
+# Spans
+  $string = preg_replace("#\[s:(.+)\](.+?)\[/s\]#is", "<span class=\"\\1\">\\2</span>", $string);
+
+# Divs
+  $string = preg_replace("#\[d:(.+)\](.+?)\[/d\]#is", "<div class=\"\\1\">\\2</div>", $string);
+
+# Subsubsections
+  do{
+    $laststring = $string;
+    $string = preg_replace("#\[subsubsection:(.+)?\](.*)?\[(sub|subsub)?section:(.+)?\]#isU", "<div class=\"subsubsection\"><div class=\"subsubsectiontitle\">$1</div>$2</div>[$3section:$4]", $string);
+  }while($string !== $laststring);
+  $string = preg_replace("#\[subsubsection:(.+)?\](.*)$#isU", "<div class=\"subsubsection\"><div class=\"subsubsectiontitle\">$1</div>$2</div>", $string);
+
+# Subsections
+  do{
+    $laststring = $string;
+    $string = preg_replace("#\[subsection:(.+)?\](.*)?\[(sub)?section:(.+)?\]#isU", "<div class=\"subsection\"><div class=\"subsectiontitle\">$1</div>$2</div>[$3section:$4]", $string);
+  }while($string !== $laststring);
+  $string = preg_replace("#\[subsection:(.+)?\](.*)$#isU", "<div class=\"subsection\"><div class=\"subsectiontitle\">$1</div>$2</div>", $string);
+
+# Sections
+  do{
+    $laststring = $string;
+    $string = preg_replace("#\[section:(.+)?\](.*)?\[section:(.+)?\]#isU", "<div class=\"section\"><div class=\"sectiontitle\">$1</div>$2</div>[section:$3]", $string);
+  }while($string !== $laststring);
+  $string = preg_replace("#\[section:(.+)?\](.*)$#isU", "<div class=\"section\"><div class=\"sectiontitle\">$1</div>$2</div>", $string);
+
   return $string;
  }
 
