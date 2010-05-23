@@ -14,12 +14,12 @@ function bbcode($string)
 #  $string = preg_replace("#\[img-r\](.+?)\[/img\]#is", "<img src=\"\\1\" alt=\"[image]\" style=\"border: thin solid #DFE5F2; FLOAT: right; MARGIN-LEFT: 20px;\" />", $string);
 
 # Spans [s:theclass]Text[/s] -or- \theclass[Text]
-  $string = preg_replace("#\\\\(.+)\[(.+)\]#isU", "<span class=\"$1\">$2</span>", $string);
-  $string = preg_replace("#\[s:(.+)\](.+)\[/s\]#isU", "<span class=\"$1\">$2</span>", $string);
+  $string = preg_replace("#\\\\(.+)\[(.+)\]#iU", "<span class=\"$1\">$2</span>", $string);
+  $string = preg_replace("#\[s:(.+)\](.+)\[/s\]#iU", "<span class=\"$1\">$2</span>", $string);
 
 # Divs [d:theclass]Text[/d] -or- \theclass{Text}
-  $string = preg_replace("#\\\\(.+)\{(.+)\}#isU", "<div class=\"$1\">$2</div>", $string);
-  $string = preg_replace("#\[d:(.+)\](.+)\[/d\]#isU", "<div class=\"$1\">$2</div>", $string);
+  $string = preg_replace("#\\\\(.+)\{(.+)\}#iU", "<div class=\"$1\">$2</div>", $string);
+  $string = preg_replace("#\[d:(.+)\](.+)\[/d\]#iU", "<div class=\"$1\">$2</div>", $string);
 
 # Paragraphs [paragraph:The Paragraph]
   do{
