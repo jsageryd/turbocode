@@ -15,11 +15,11 @@ function bbcode($string)
 
 # Spans [s:theclass]Text[/s] -or- \theclass[Text]
   $string = preg_replace("#\[s:(.+?)\](.+?)\[/s\]#isU", "<span class=\"$1\">$2</span>", $string);
-  $string = preg_replace("#\\(.+?)\[(.+?)\]#isU", "<span class=\"$1\">$2</span>", $string);
+  $string = preg_replace("#\\\\(.+?)\[(.+?)\]#isU", "<span class=\"$1\">$2</span>", $string);
 
 # Divs [d:theclass]Text[/d] -or- \theclass{Text}
   $string = preg_replace("#\[d:(.+?)\](.+?)\[/d\]#isU", "<div class=\"$1\">$2</div>", $string);
-  $string = preg_replace("#\\(.+?)\{(.+?)\}#isU", "<div class=\"$1\">$2</div>", $string);
+  $string = preg_replace("#\\\\(.+?)\{(.+?)\}#isU", "<div class=\"$1\">$2</div>", $string);
 
 # Paragraphs [paragraph:The Paragraph]
   do{
