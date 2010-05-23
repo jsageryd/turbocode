@@ -14,10 +14,10 @@ function bbcode($string)
 #  $string = preg_replace("#\[img-r\](.+?)\[/img\]#is", "<img src=\"\\1\" alt=\"[image]\" style=\"border: thin solid #DFE5F2; FLOAT: right; MARGIN-LEFT: 20px;\" />", $string);
 
 # Spans
-  $string = preg_replace("#\[s:(.+)\](.+?)\[/s\]#is", "<span class=\"\\1\">\\2</span>", $string);
+  $string = preg_replace("#\[s:(.+)\](.+?)\[/s\]#is", "<span class=\"$1\">$2</span>", $string);
 
 # Divs
-  $string = preg_replace("#\[d:(.+)\](.+?)\[/d\]#is", "<div class=\"\\1\">\\2</div>", $string);
+  $string = preg_replace("#\[d:(.+)\](.+?)\[/d\]#is", "<div class=\"$1\">$2</div>", $string);
 
 # Paragraphs
   do{
