@@ -15,9 +15,11 @@ function bbcode($string)
 
 # Spans
   $string = preg_replace("#\[s:(.+)\](.+?)\[/s\]#is", "<span class=\"$1\">$2</span>", $string);
+  $string = preg_replace("#\\(.+)\[(.+?)\]#is", "<span class=\"$1\">$2</span>", $string);
 
 # Divs
   $string = preg_replace("#\[d:(.+)\](.+?)\[/d\]#is", "<div class=\"$1\">$2</div>", $string);
+  $string = preg_replace("#\\(.+)\{(.+?)\}#is", "<div class=\"$1\">$2</div>", $string);
 
 # Paragraphs
   do{
