@@ -22,23 +22,23 @@ function bbcode($string)
 # Subsubsections
   do{
     $laststring = $string;
-    $string = preg_replace("#\[subsubsection:(.+)?\](.*)?\[(sub|subsub)?section:(.+)?\]#isU", "<div class=\"subsubsection\"><div class=\"subsubsectiontitle\">$1</div>$2</div>[$3section:$4]", $string);
+    $string = preg_replace("#\[subsubsection:(.+)?\](.*)?\[(sub|subsub)?section:(.+)?\]#isU", "<div class=\"subsubsection\"><h3>$1</h3>$2</div>[$3section:$4]", $string);
   }while($string !== $laststring);
-  $string = preg_replace("#\[subsubsection:(.+)?\](.*)$#isU", "<div class=\"subsubsection\"><div class=\"subsubsectiontitle\">$1</div>$2</div>", $string);
+  $string = preg_replace("#\[subsubsection:(.+)?\](.*)$#isU", "<div class=\"subsubsection\"><h3>$1</h3>$2</div>", $string);
 
 # Subsections
   do{
     $laststring = $string;
-    $string = preg_replace("#\[subsection:(.+)?\](.*)?\[(sub)?section:(.+)?\]#isU", "<div class=\"subsection\"><div class=\"subsectiontitle\">$1</div>$2</div>[$3section:$4]", $string);
+    $string = preg_replace("#\[subsection:(.+)?\](.*)?\[(sub)?section:(.+)?\]#isU", "<div class=\"subsection\"><h2>$1</h2>$2</div>[$3section:$4]", $string);
   }while($string !== $laststring);
-  $string = preg_replace("#\[subsection:(.+)?\](.*)$#isU", "<div class=\"subsection\"><div class=\"subsectiontitle\">$1</div>$2</div>", $string);
+  $string = preg_replace("#\[subsection:(.+)?\](.*)$#isU", "<div class=\"subsection\"><h2>$1</h2>$2</div>", $string);
 
 # Sections
   do{
     $laststring = $string;
-    $string = preg_replace("#\[section:(.+)?\](.*)?\[section:(.+)?\]#isU", "<div class=\"section\"><div class=\"sectiontitle\">$1</div>$2</div>[section:$3]", $string);
+    $string = preg_replace("#\[section:(.+)?\](.*)?\[section:(.+)?\]#isU", "<div class=\"section\"><h1>$1</h1>$2</div>[section:$3]", $string);
   }while($string !== $laststring);
-  $string = preg_replace("#\[section:(.+)?\](.*)$#isU", "<div class=\"section\"><div class=\"sectiontitle\">$1</div>$2</div>", $string);
+  $string = preg_replace("#\[section:(.+)?\](.*)$#isU", "<div class=\"section\"><h1>$1</h1>$2</div>", $string);
 
   return $string;
  }
