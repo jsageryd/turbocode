@@ -16,40 +16,40 @@ function turbocode($string){
 		$laststring = $string;
 
 #		Spans \theclass[Text]
-		$string = preg_replace("#\\\\([^\{]+)\[(.+)\]#isU", "<span class=\"$1\">$2</span>", $string);
+		$string = preg_replace("#\\\\([^\{]+)\[(.+)\]#isU", "<span class=\"tc_$1\">$2</span>", $string);
 
 #		Divs \theclass{Text}
-		$string = preg_replace("#\\\\([^\[]+)\{(.+)\}#isU", "<div class=\"$1\">$2</div>", $string);
+		$string = preg_replace("#\\\\([^\[]+)\{(.+)\}#isU", "<div class=\"tc_$1\">$2</div>", $string);
 
 	}while($string !== $laststring);
 
 #	Paragraphs [paragraph:The Paragraph]
 	do{
 		$laststring = $string;
-		$string = preg_replace("#\[paragraph:(.+)\](.*)\[(paragraph|section|subsection|subsubsection):(.+)\]#isU", "<div class=\"paragraph\"><h4>$1</h4>$2</div>\n[$3:$4]", $string, 1);
+		$string = preg_replace("#\[paragraph:(.+)\](.*)\[(paragraph|section|subsection|subsubsection):(.+)\]#isU", "<div class=\"tc_paragraph\"><h4>$1</h4>$2</div>\n[$3:$4]", $string, 1);
 	}while($string !== $laststring);
-	$string = preg_replace("#\[paragraph:(.+)\](.*)$#isU", "<div class=\"paragraph\"><h4>$1</h4>$2</div>", $string);
+	$string = preg_replace("#\[paragraph:(.+)\](.*)$#isU", "<div class=\"tc_paragraph\"><h4>$1</h4>$2</div>", $string);
 
 #	Subsubsections [subsubsection:The Subsubsection]
 	do{
 		$laststring = $string;
-		$string = preg_replace("#\[subsubsection:(.+)\](.*)\[(sub|subsub)?section:(.+)\]#isU", "<div class=\"subsubsection\"><h3>$1</h3>$2</div>\n[$3section:$4]", $string, 1);
+		$string = preg_replace("#\[subsubsection:(.+)\](.*)\[(sub|subsub)?section:(.+)\]#isU", "<div class=\"tc_subsubsection\"><h3>$1</h3>$2</div>\n[$3section:$4]", $string, 1);
 	}while($string !== $laststring);
-	$string = preg_replace("#\[subsubsection:(.+)\](.*)$#isU", "<div class=\"subsubsection\"><h3>$1</h3>$2</div>", $string);
+	$string = preg_replace("#\[subsubsection:(.+)\](.*)$#isU", "<div class=\"tc_subsubsection\"><h3>$1</h3>$2</div>", $string);
 
 #	Subsections [subsection:The Subsection]
 	do{
 		$laststring = $string;
-		$string = preg_replace("#\[subsection:(.+)\](.*)\[(sub)?section:(.+)\]#isU", "<div class=\"subsection\"><h2>$1</h2>$2</div>\n[$3section:$4]", $string, 1);
+		$string = preg_replace("#\[subsection:(.+)\](.*)\[(sub)?section:(.+)\]#isU", "<div class=\"tc_subsection\"><h2>$1</h2>$2</div>\n[$3section:$4]", $string, 1);
 	}while($string !== $laststring);
-	$string = preg_replace("#\[subsection:(.+)\](.*)$#isU", "<div class=\"subsection\"><h2>$1</h2>$2</div>", $string);
+	$string = preg_replace("#\[subsection:(.+)\](.*)$#isU", "<div class=\"tc_subsection\"><h2>$1</h2>$2</div>", $string);
 
 #	Sections [section: The Section]
 	do{
 		$laststring = $string;
-		$string = preg_replace("#\[section:(.+)\](.*)\[section:(.+)\]#isU", "<div class=\"section\"><h1>$1</h1>$2</div>\n[section:$3]", $string, 1);
+		$string = preg_replace("#\[section:(.+)\](.*)\[section:(.+)\]#isU", "<div class=\"tc_section\"><h1>$1</h1>$2</div>\n[section:$3]", $string, 1);
 	}while($string !== $laststring);
-	$string = preg_replace("#\[section:(.+)\](.*)$#isU", "<div class=\"section\"><h1>$1</h1>$2</div>", $string);
+	$string = preg_replace("#\[section:(.+)\](.*)$#isU", "<div class=\"tc_section\"><h1>$1</h1>$2</div>", $string);
 
 	return $string;
 }
