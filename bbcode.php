@@ -17,10 +17,10 @@ function bbcode($string)
     $laststring = $string;
 
 # Spans \theclass[Text]
-    $string = preg_replace("#\\\\(.+)\[(.+)\]#isU", "<span class=\"$1\">$2</span>", $string);
+    $string = preg_replace("#\\\\(\S+)\[(.+)\]#isU", "<span class=\"$1\">$2</span>", $string);
 
 # Divs \theclass{Text}
-    $string = preg_replace("#\\\\(.+)\{(.+)\}#isU", "<div class=\"$1\">$2</div>", $string);
+    $string = preg_replace("#\\\\(\S+)\{(.+)\}#isU", "<div class=\"$1\">$2</div>", $string);
 
   }while($string !== $laststring);
 
