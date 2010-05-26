@@ -62,8 +62,8 @@ function turbocode($string){
 
 $e = &$modx->Event;
 switch ($e->name) {
-	case "OnWebPagePrerender":
-		$o = &$modx->documentOutput; // get a reference of the output
+	case "OnLoadWebDocument":
+		$o = &$modx->documentObject['content']; // get a reference of the output
 		$o = turbocode($o);
 		break;
 	default :
