@@ -15,8 +15,14 @@ function turbocode($string){
 	do{
 		$laststring = $string;
 
+#		Spans \theclass[Text][Title]
+		$string = preg_replace("#\\\\([^\{]+)\[(.+)\]\[((.+)\]#isU", "<span class=\"tc_$1\" title=\"$2\">$3</span>", $string);
+
 #		Spans \theclass[Text]
 		$string = preg_replace("#\\\\([^\{]+)\[(.+)\]#isU", "<span class=\"tc_$1\">$2</span>", $string);
+
+#		Divs \theclass{Text}{Title}
+		$string = preg_replace("#\\\\([^\[]+)\{(.+)\}\{((.+)\}#isU", "<div class=\"tc_$1\" title=\"$2\">$3</span>", $string);
 
 #		Divs \theclass{Text}
 		$string = preg_replace("#\\\\([^\[]+)\{(.+)\}#isU", "<div class=\"tc_$1\">$2</div>", $string);
