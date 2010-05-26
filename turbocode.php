@@ -12,23 +12,6 @@ function turbocode($string){
 #	$string = preg_replace("#\[img-l\](.+?)\[/img\]#is", "<img src=\"\\1\" alt=\"[image]\" style=\"border: thin solid #DFE5F2; FLOAT: left; MARGIN-RIGHT: 20px\" />", $string);
 #	$string = preg_replace("#\[img-r\](.+?)\[/img\]#is", "<img src=\"\\1\" alt=\"[image]\" style=\"border: thin solid #DFE5F2; FLOAT: right; MARGIN-LEFT: 20px;\" />", $string);
 
-	do{
-		$laststring = $string;
-
-#		Spans \theclass[Text][Title]
-		$string = preg_replace("#\\\\([^\{\[\]\}]+)\[([^\[\]\\\\]+)\]\[(.+)\]#isU", "<span class=\"tc_$1\" title=\"$3\">$2</span>", $string);
-
-#		Spans \theclass[Text]
-		$string = preg_replace("#\\\\([^\{]+)\[(.+)\]#isU", "<span class=\"tc_$1\">$2</span>", $string);
-
-#		Divs \theclass{Text}{Title}
-		$string = preg_replace("#\\\\([^\{\[\]\}]+)\{([^\{\}\\\\]+)\}\{(.+)\}#isU", "<div class=\"tc_$1\" title=\"$3\">$2</span>", $string);
-
-#		Divs \theclass{Text}
-		$string = preg_replace("#\\\\([^\[]+)\{(.+)\}#isU", "<div class=\"tc_$1\">$2</div>", $string);
-
-	}while($string !== $laststring);
-
 #	Paragraphs [paragraph:The Paragraph]
 	do{
 		$laststring = $string;
@@ -56,6 +39,23 @@ function turbocode($string){
 		$string = preg_replace("#\[section:(.+)\](.*)\[section:(.+)\]#isU", "<div class=\"tc_section\"><h1>$1</h1>$2</div>\n[section:$3]", $string, 1);
 	}while($string !== $laststring);
 	$string = preg_replace("#\[section:(.+)\](.*)$#isU", "<div class=\"tc_section\"><h1>$1</h1>$2</div>", $string);
+
+	do{
+		$laststring = $string;
+
+#		Spans \theclass[Text][Title]
+		$string = preg_replace("#\\\\([^\{\[\]\}]+)\[([^\[\]\\\\]+)\]\[(.+)\]#isU", "<span class=\"tc_$1\" title=\"$3\">$2</span>", $string);
+
+#		Spans \theclass[Text]
+		$string = preg_replace("#\\\\([^\{]+)\[(.+)\]#isU", "<span class=\"tc_$1\">$2</span>", $string);
+
+#		Divs \theclass{Text}{Title}
+		$string = preg_replace("#\\\\([^\{\[\]\}]+)\{([^\{\}\\\\]+)\}\{(.+)\}#isU", "<div class=\"tc_$1\" title=\"$3\">$2</span>", $string);
+
+#		Divs \theclass{Text}
+		$string = preg_replace("#\\\\([^\[]+)\{(.+)\}#isU", "<div class=\"tc_$1\">$2</div>", $string);
+
+	}while($string !== $laststring);
 
 	return $string;
 }
