@@ -12,6 +12,14 @@ function turbocode($string){
 //	$string = preg_replace("#\[img-l\](.+?)\[/img\]#is", "<img src=\"\\1\" alt=\"[image]\" style=\"border: thin solid #DFE5F2; FLOAT: left; MARGIN-RIGHT: 20px\" />", $string);
 //	$string = preg_replace("#\[img-r\](.+?)\[/img\]#is", "<img src=\"\\1\" alt=\"[image]\" style=\"border: thin solid #DFE5F2; FLOAT: right; MARGIN-LEFT: 20px;\" />", $string);
 
+//	Start site-specific
+	// Music player
+		$mp="assets/flash/musicplayer.swf?b_colors=ff0000,0000ff,00ff00,000000";
+		$w = 17;
+		$h = 17;
+		$string = preg_replace("#\[aud\](.+?)\[/aud\]#isU", "<object class=\"tc_musicplayer\" type=\"application/x-shockwave-flash\" data=\"$mp&song_url=$1\" width=\"$w\" height=\"$h\"><param name=\"movie\" value=\"$mp&song_url=$1\" /><img src=\"noflash.gif\" width=\"$w\" height=\"$h\" alt=\"\" /></object>", $string);
+//	End site-specific
+
 	do{
 		$laststring = $string;
 
