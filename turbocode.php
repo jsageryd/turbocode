@@ -14,10 +14,10 @@ function turbocode($string){
 
 //	Start site-specific
 	// Music player
-		$mp="assets/flash/musicplayer.swf?b_colors=ff0000,0000ff,00ff00,000000";
+		$mp="assets/flash/musicplayer.swf";
 		$w = 17;
 		$h = 17;
-		$string = preg_replace("#\[aud\](.+)\[/aud\]#uisU", "<object class=\"tc_musicplayer\" type=\"application/x-shockwave-flash\" data=\"$mp&song_url=$1\" width=\"$w\" height=\"$h\"><param name=\"movie\" value=\"$mp&song_url=$1\" /><img src=\"noflash.gif\" width=\"$w\" height=\"$h\" alt=\"\" /></object>", $string);
+		$string = preg_replace("#\[aud\](.+)\[/aud\]#uisU", "<object class=\"tc_musicplayer\" type=\"application/x-shockwave-flash\" data=\"$mp?song_url=$1\" width=\"$w\" height=\"$h\"><param name=\"movie\" value=\"$mp&song_url=$1\" /><img src=\"noflash.gif\" width=\"$w\" height=\"$h\" alt=\"\" /></object>", $string);
 //	End site-specific
 
 	do{
