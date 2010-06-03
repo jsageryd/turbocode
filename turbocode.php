@@ -1,3 +1,5 @@
+namespace Turbocode_plugin;
+
 function turbocode($string){
 //	$string = preg_replace("#\[b\](.+?)\[/b\]#is", "<b>\\1</b>", $string);
 //	$string = preg_replace("#\[i\](.+?)\[/i\]#is", "<i>\\1</i>", $string);
