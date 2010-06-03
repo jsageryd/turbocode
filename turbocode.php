@@ -7,8 +7,8 @@ function turbocode($string){
 //	$string = preg_replace("#\[link=(.+?)\](.+?)\[/link\]#is", "<a href=\"\\1\">\\2</a>", $string);
 //	$string = preg_replace("#\[url\]www\.(.+?)\[/url\]#is", "<a href=\"http://www.\\1\">www.\\1</a>", $string);
 	$string = preg_replace("#\[url\](.+)\[/url\]#uisU", "<a href=\"$1\">$1</a>", $string);
-	$string = preg_replace("#\[url=\"(.+)\"\](.+)\[/url\]#uisU", "<a href=\"$1\">$2</a>", $string);
-	$string = preg_replace("#\[url=(.+)\](.+)\[/url\]#uisU", "<a href=\"$1\">$2</a>", $string);
+	$string = preg_replace("#\[url\s*=\s*\"(.+)\"\s*\](.+)\[/url\]#uisU", "<a href=\"$1\">$2</a>", $string);
+	$string = preg_replace("#\[url\s*=\s*(.+)\s*\](.+)\[/url\]#uisU", "<a href=\"$1\">$2</a>", $string);
 	$string = preg_replace("#\[img\](.+)\[/img\]#uisU", "<img src=\"$1\" alt=\"[image]\" class=\"tc_image\" />", $string);
 //	$string = preg_replace("#\[img-l\](.+?)\[/img\]#is", "<img src=\"\\1\" alt=\"[image]\" style=\"border: thin solid #DFE5F2; FLOAT: left; MARGIN-RIGHT: 20px\" />", $string);
 //	$string = preg_replace("#\[img-r\](.+?)\[/img\]#is", "<img src=\"\\1\" alt=\"[image]\" style=\"border: thin solid #DFE5F2; FLOAT: right; MARGIN-LEFT: 20px;\" />", $string);
