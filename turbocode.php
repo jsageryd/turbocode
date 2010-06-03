@@ -27,13 +27,13 @@ function turbocode($string){
 		$string = preg_replace("#\\\\([^\{\[\]\}]+)\[([^\[\]\\\\]+)\]\[(.+)\]#uisU", "<span class=\"tc_$1\" title=\"$3\">$2</span>", $string);
 
 //		Spans \theclass[Text]
-		$string = preg_replace("#\\\\([^\{]+)\[(.+)\]#uisU", "<span class=\"tc_$1\">$2</span>", $string);
+		$string = preg_replace("#\\\\([^\{\[\]\}]+)\[(.+)\]#uisU", "<span class=\"tc_$1\">$2</span>", $string);
 
 //		Divs \theclass{Text}{Title}
 		$string = preg_replace("#\\\\([^\{\[\]\}]+)\{([^\{\}\\\\]+)\}\{(.+)\}#uisU", "<div class=\"tc_$1\" title=\"$3\">$2</span>", $string);
 
 //		Divs \theclass{Text}
-		$string = preg_replace("#\\\\([^\[]+)\{(.+)\}#uisU", "<div class=\"tc_$1\">$2</div>", $string);
+		$string = preg_replace("#\\\\([^\{\[\]\}]+)\{(.+)\}#uisU", "<div class=\"tc_$1\">$2</div>", $string);
 
 	}while($string !== $laststring);
 
