@@ -68,6 +68,22 @@ function turbocode($string){
 	}while($string !== $laststring);
 	$string = preg_replace("#\[section:(.+)\](.*)$#uisU", "<div class=\"tc_section\"><h1>$1</h1>$2</div>", $string);
 
+
+//	Simple replacements
+	$replace = array(
+		'--'	=>	'&ndash;',
+		'---'	=>	'&mdash;',
+		'<-'	=>	'&larr;',
+		'->'	=>	'&rarr;',
+		'<='	=>	'&lArr;',
+		'=>'	=>	'&lArr;',
+		'<->'	=>	'&harr;',
+		'<=>'	=>	'&hArr;'
+	);
+
+	$string = strtr($string, $replace);
+
+
 	return $string;
 }
 
