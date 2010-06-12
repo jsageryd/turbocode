@@ -78,7 +78,11 @@ function turbocode($string){
 		'<='	=>	'&lArr;',
 		'=>'	=>	'&rArr;',
 		'<->'	=>	'&harr;',
-		'<=>'	=>	'&hArr;'
+		'<=>'	=>	'&hArr;',
+		'>='	=>	'&ge;',
+		'=<'	=>	'&le;',
+		'~='	=>	'&asymp;',
+		'-='	=>	'&ne;'
 	);
 
 	$string = strtr($string, $replace);
