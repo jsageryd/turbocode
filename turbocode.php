@@ -76,7 +76,7 @@ function turbocode($string){
 		'<-'	=>	'&larr;',
 		'->'	=>	'&rarr;',
 		'<='	=>	'&lArr;',
-		'=>'	=>	'&lArr;',
+		'=>'	=>	'&rArr;',
 		'<->'	=>	'&harr;',
 		'<=>'	=>	'&hArr;'
 	);
